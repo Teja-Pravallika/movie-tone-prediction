@@ -1,4 +1,4 @@
-from impots import *
+from imports import *
 from scripts.model import create_dataloaders, initialize_model, tokenizer, max_token_length
 from scripts.validation import validate
 
