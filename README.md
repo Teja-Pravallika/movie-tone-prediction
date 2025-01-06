@@ -39,19 +39,43 @@ Humorous, Inspiring, Heartwarming, Bittersweet, Euphoric, Melancholic, Tense, Ro
 
 **Generated Labels:** 29 emotional tones, including Humorous, Inspiring, Nostalgic, and more.
 
-**Neural Network Architecture:**
+**Loss Function Used:** Binary Cross-Entropy with Logits Loss (BCEWithLogitsLoss).
 
-The custom RobertaClass neural network, built on the pre-trained roberta-base model, includes:
+**Optimizer Used:** Adam Optimizer.
 
-**Pre-Classifier:** Fully connected layer (768 units) to refine RoBERTa's output.
+**Training:**
 
-**Dropout:** Dropout probability of 0.2 to prevent overfitting.
+Training used a multi-label binary classification approach. 
 
-**Classifier:** Linear layer with 29 output units for multi-label classification.
+**Key aspects:**
 
-**Loss Function:** Binary Cross-Entropy with Logits Loss (BCEWithLogitsLoss).
+**Loss Function:** BCEWithLogitsLoss
 
-**Optimizer:** Adam Optimizer.
+**Threshold:** 0.5
 
-The implementation of RobertaClass is available in the model.py file in the scripts folder.
+**Hyperparameters:**
+
+**Learning Rate: 2e-5**
+
+**Batch Size:** 16
+
+**Number of Epochs:** 3
+
+The training process is implemented in the train_model function, available in the train.py file located in the scripts folder.
+
+#### ** Loss and Accuracy during training With Sampling:**
+
+![Loss and Accuracy during training With Sampling](images/loss_accuracy_tpm.png)
+
+Training Results without using Sampling with replacement:
+
+![Table showing training results without sampling](images/train_results_no_sampling.png)
+
+Training Results using Sampling with replacement:
+
+![Table showing training results using sampling](images/training_results_with_sampling.png)
+
+
+
+
 
