@@ -81,7 +81,13 @@ Evaluation Metrics:
 
 ![Table showing test results with and without sampling](images/final_eval_results.png)
 
+As we can see from the test metrics eventhough the accuracy we have achieved higher accuracy before sampling we can see that the precision,
 
+recall, f1-score seems to be very low without sampling, the table show that sampling with replacement significantly improved all metrics, 
+
+especially precision and recall, leading to an increased F1-score from 0.6628 to 0.876.
+
+Precision-Recall (PR) Curves:
 
 
 
