@@ -49,7 +49,7 @@ Humorous, Inspiring, Heartwarming, Bittersweet, Euphoric, Melancholic, Tense, Ro
 
 **Generated Labels:** 29 emotional tones, including Humorous, Inspiring, Nostalgic, and more.
 
-## **Training:**
+### **Training:**
 
 Training used a multi-label binary classification approach.
 
