@@ -2,6 +2,7 @@
 An LLM-based approach to classify emotional tones in movie descriptions
 
 **Introduction**
+
 This project explores the use of machine learning and deep learning, leveraging large language models (LLMs) to classify emotional tones in movie descriptions. The dataset is derived from The Movies Dataset on Kaggle, specifically the movies_metadata.csv file. Only the original_title and overview fields from 15,000 movies were used.
 
 Using the GPT-4o-mini API as the teacher, emotional tone labels were generated for the movie overviews. These labels served as training data for fine-tuning a pre-trained student model, RoBERTa, to perform multi-label classification.
@@ -10,21 +11,47 @@ Class imbalance in the dataset, especially among rare emotional tones, was ident
 
 **Features**
 
-* **Teacher-Student Distillation:**
+**Teacher-Student Distillation:**
+
 * **Teacher Model:** GPT-4o-mini generated up to four emotional tone labels for each movie overview.
+  
 * **Student Model:** A pre-trained RoBERTa model was fine-tuned on the labeled dataset for tone classification.
-* Teacher-student distillation enabled labeling of an otherwise unlabeled dataset, reducing manual effort while enabling robust training.
-* **Improved Metrics:** Enhanced performance metrics (precision, recall, F1-score) through dataset augmentation 
+  
+Teacher-student distillation enabled labeling of an otherwise unlabeled dataset, reducing manual effort while enabling robust training.
+ 
+ **Improved Metrics:** Enhanced performance metrics (precision, recall, F1-score) through dataset augmentation 
 
 **Emotional Tones**
+
 The project classifies movies into the following 29 emotional tones:
+
 Humorous, Inspiring, Heartwarming, Bittersweet, Euphoric, Melancholic, Tense, Romantic, Nostalgic, Intriguing, Comforting, Provocative, Empowering, Profound, Enchanting, Alarming, Perilous, Ominous, Fearless, Imaginative, Methodical, Investigative, Intellectual, Sophisticated, Innovative, Futuristic, Wholesome, Raw, Optimistic.
 
 **Dataset Details**
+
 **Source:** The Movies Dataset on Kaggle
+
 **Chosen File:** movies_metadata.csv
+
 **Features Used:** original_title, overview
+
 **Dataset Size:** 15,000 movies
+
 **Generated Labels:** 29 emotional tones, including Humorous, Inspiring, Nostalgic, and more.
 
+**Neural Network Architecture:**
+
+The custom RobertaClass neural network, built on the pre-trained roberta-base model, includes:
+
+**Pre-Classifier:** Fully connected layer (768 units) to refine RoBERTa's output.
+
+**Dropout:** Dropout probability of 0.2 to prevent overfitting.
+
+**Classifier:** Linear layer with 29 output units for multi-label classification.
+
+**Loss Function:** Binary Cross-Entropy with Logits Loss (BCEWithLogitsLoss).
+
+**Optimizer:** Adam Optimizer.
+
+The implementation of RobertaClass is available in the model.py file in the scripts folder.
 
