@@ -1,6 +1,6 @@
-# Emotional Tone Prediction In Movies Using LLMs
+# Fine-tuning Roberta for Emotional Tone Prediction using GPT-4o as a teacher
 An LLM-based approach to classify emotional tones in movie descriptions
-Introduction
+**Introduction**
 This project explores the use of machine learning and deep learning, leveraging large language models (LLMs) to classify emotional tones in movies based on their descriptions. Using the GPT-4o-mini API, emotional tone labels were generated for movie descriptions, and a fine-tuned RoBERTa model—a deep learning architecture—was trained on the labeled data to perform multi-label classification. To address the challenges of class imbalance, rare tones were identified using precision-recall (PR) curves, and the dataset was augmented through sampling with replacement. This deep learning approach significantly improved the model's precision, recall, and F1-scores, showcasing the effectiveness of handling class imbalance in multi-label classification tasks.
 
 **Features**
