@@ -3,13 +3,15 @@ An LLM-based approach to classify emotional tones in movie descriptions
 
 ### **Introduction**
 
-This project explores the use of machine learning and deep learning, leveraging large language models (LLMs) to classify emotional tones in movie descriptions. The dataset is derived from The Movies Dataset on Kaggle, specifically the movies_metadata.csv file. Only the original_title and overview fields from 15,000 movies were used.
+This project uses machine learning and deep learning with large language models (LLMs) to classify emotional tones in movie descriptions.
 
-Using the GPT-4o-mini API as the teacher, emotional tone labels were generated for the movie overviews. These labels served as training data for fine-tuning a pre-trained student model, RoBERTa, to perform multi-label classification.
+Using the Movies Dataset from Kaggle, 15,000 movie overviews were labeled with emotional tones by the GPT-4o-mini API (teacher model). 
 
-Class imbalance in the dataset, especially among rare emotional tones, was identified using precision-recall (PR) curves. Rare tones, which showed low AUC in the PR curves, were addressed using sampling with replacement to augment the dataset. This approach significantly improved precision, recall, and F1-scores, demonstrating the effectiveness of handling class imbalance in multi-label classification tasks.
+These labels were used to fine-tune a pre-trained RoBERTa model (student model) for multi-label classification. Class imbalance,
 
-### **Features**
+particularly for rare tones with low AUC in PR curves, was addressed through sampling with replacement, significantly improving precision,
+
+recall, and F1-scores. This highlights the effectiveness of handling class imbalance in multi-label classification.**Features**
 
 **Teacher-Student Distillation:**
 
@@ -75,22 +77,21 @@ The training process is implemented in the train_model function, available in th
 
 * The validation is done on test dataset by calling the validate method in validate.py in scripts
 
-** Comaparision of test metrics before and after Sampling**
+**Comparision of test metrics before and after Sampling**
 
 ![Table showing test results with and without sampling](images/final_eval_results.png)
 
-As we can see from the test metrics eventhough the accuracy we have achieved higher accuracy before sampling we can see that the precision,
+From the test metrics, although the accuracy was high before sampling, precision, recall, and F1-score were significantly lower. Sampling
 
-recall, f1-score seems to be very low without sampling, the table show that sampling with replacement significantly improved all metrics, 
+with replacement improved these metrics, increasing the F1-score from 0.6628 to 0.876.
 
-especially precision and recall, leading to an increased F1-score from 0.6628 to 0.876.
+### **Precision-Recall (PR) Curves:**
 
-Precision-Recall (PR) Curves:
-we have got pr curves for each of the 29 tones. Tones such as romantic, bittersweet, intriguing etc seems to be more frequent when compared
+We plotted PR curves for each of the 29 tones. Frequent tones like humorous, romantic, and intriguing show better AUCs compared to rare 
 
-to tones such as ominous, futuristic seems to be less frequent, so for the less frequent tones we have lower Area under curve so we have
+tones like comforting, innovative, and intellectual. Sampling with replacement improved the PR curves of rare tones significantly.
 
-identified eight of these rare tones and done sampling with replacement for these rare tones
+Rare tones sampled: Tone IDs [ 2, 3, 7, 11, 13, 17, 20, 16]
 
 The below are pr curves for few of the rare tones before and after sampling:
 
@@ -104,9 +105,33 @@ The below are pr curves for few of the rare tones before and after sampling:
 
 | **Before Sampling**                                   | **After Sampling**                                    |
 |-------------------------------------------------------|------------------------------------------------------|
-| <img src="images/pr_tone_11_no_sampling.png" alt="PR Curve for Tone 11 Without Sampling" width="500"> | <img src="images/pr_11_sampling.png" alt="PR Curve for Tone 2 After Sampling" width="500"> |
+| <img src="images/pr_tone_11_no_sampling.png" alt="PR Curve for Tone 11 Without Sampling" width="500"> | <img src="images/pr_11_sampling.png" alt="PR Curve for Tone 11 After Sampling" width="500"> |
 
+### **PR Curve for Rare Tone 17 (Intellectual)**
 
+| **Before Sampling**                                   | **After Sampling**                                    |
+|-------------------------------------------------------|------------------------------------------------------|
+| <img src="images/pr_tone_17_no_sampling.png" alt="PR Curve for Tone 17 Without Sampling" width="500"> | <img src="images/pr_17_sampling 2.png" alt="PR Curve for Tone 17 After Sampling" width="500"> |
 
+### **PR Curve for Rare Tone 26 (Sophisticated)**
 
+| **Before Sampling**                                   | **After Sampling**                                    |
+|-------------------------------------------------------|------------------------------------------------------|
+| <img src="images/pr_tone_26_no_sampling.png" alt="PR Curve for Tone 26 Without Sampling" width="500"> | <img src="images/pr_26_sampling.png" alt="PR Curve for Tone 26 After Sampling" width="500"> |
 
+So from the above pr curves we can seee for the less frequent tones we have lower Area under curve so we have
+
+identified eight of these rare tones and done sampling with replacement for these rare tones.
+
+### **PR Curve for frequent Tone 9 (humuorous)**
+| **Before Sampling**                                   | **After Sampling**                                    |
+|-------------------------------------------------------|------------------------------------------------------|
+| <img src="images/pr_tone_9_no_sampling.png" alt="PR Curve for Tone 9 Without Sampling" width="500"> | <img src="images/pr_tone9_sampling.png" alt="PR Curve for Tone 9 After Sampling" width="500"> |
+
+![Table showing metrics of rare tones](images/rare_tones_comaparision.png)
+From the table, we can say that, sampling with replacement has improved the precision, recall and overall performance of rare tones. 
+
+![Table showing metrics of few frequent tones](images/good_tones_comaprision.png)
+### **Conclusion:**
+
+Overall, by identifying rare tones and augmenting the dataset, the F1-score increased from 0.6628 to 0.876, with notable improvements in precision and recall for rare tones. PR curves highlight how this approach effectively addressed class imbalance, benefiting rare tones while maintaining stable performance for frequent tones.
