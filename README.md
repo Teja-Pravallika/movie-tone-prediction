@@ -1,10 +1,10 @@
 ### **Getting Started:**
 
-1. **Set up the environment and install dependencies:** pip install -r requirements.txt
+1. **Set up the environment and install dependencies:**  pip install -r requirements.txt
 
-2. a) **To train the model:** python scripts/train.py
+2. a) **To train the model:**  python scripts/train.py
 
-   b) **To validate the model:** python scripts/validate.py
+   b) **To validate the model:**  python scripts/validate.py
 
 # Fine-tuning Roberta for Emotional Tone Prediction using GPT-4o as a teacher
 An LLM-based approach to classify emotional tones in movie descriptions
