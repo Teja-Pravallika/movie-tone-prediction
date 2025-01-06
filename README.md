@@ -1,14 +1,30 @@
 # Fine-tuning Roberta for Emotional Tone Prediction using GPT-4o as a teacher
 An LLM-based approach to classify emotional tones in movie descriptions
+
 **Introduction**
-This project explores the use of machine learning and deep learning, leveraging large language models (LLMs) to classify emotional tones in movies based on their descriptions. Using the GPT-4o-mini API, emotional tone labels were generated for movie descriptions, and a fine-tuned RoBERTa model—a deep learning architecture—was trained on the labeled data to perform multi-label classification. To address the challenges of class imbalance, rare tones were identified using precision-recall (PR) curves, and the dataset was augmented through sampling with replacement. This deep learning approach significantly improved the model's precision, recall, and F1-scores, showcasing the effectiveness of handling class imbalance in multi-label classification tasks.
+This project explores the use of machine learning and deep learning, leveraging large language models (LLMs) to classify emotional tones in movie descriptions. The dataset is derived from The Movies Dataset on Kaggle, specifically the movies_metadata.csv file. Only the original_title and overview fields from 15,000 movies were used.
+
+Using the GPT-4o-mini API as the teacher, emotional tone labels were generated for the movie overviews. These labels served as training data for fine-tuning a pre-trained student model, RoBERTa, to perform multi-label classification.
+
+Class imbalance in the dataset, especially among rare emotional tones, was identified using precision-recall (PR) curves. Rare tones, which showed low AUC in the PR curves, were addressed using sampling with replacement to augment the dataset. This approach significantly improved precision, recall, and F1-scores, demonstrating the effectiveness of handling class imbalance in multi-label classification tasks.
 
 **Features**
-* **Label Generation:** Used GPT-4o-mini API to generate up to four emotional tone labels per movie.
-* **Deep Learning Model:** Fine-tuned a pre-trained RoBERTa model using PyTorch for tone classification.
-* **Class Imbalance Handling:** Identified rare tones using PR curve AUC scores and applied sampling with replacement.
-* **Improved Metrics:** Enhanced performance metrics (precision, recall, F1-score) through dataset augmentation.
+
+* **Teacher-Student Distillation:**
+* **Teacher Model:** GPT-4o-mini generated up to four emotional tone labels for each movie overview.
+* **Student Model:** A pre-trained RoBERTa model was fine-tuned on the labeled dataset for tone classification.
+* Teacher-student distillation enabled labeling of an otherwise unlabeled dataset, reducing manual effort while enabling robust training.
+* **Improved Metrics:** Enhanced performance metrics (precision, recall, F1-score) through dataset augmentation 
 
 **Emotional Tones**
 The project classifies movies into the following 29 emotional tones:
 Humorous, Inspiring, Heartwarming, Bittersweet, Euphoric, Melancholic, Tense, Romantic, Nostalgic, Intriguing, Comforting, Provocative, Empowering, Profound, Enchanting, Alarming, Perilous, Ominous, Fearless, Imaginative, Methodical, Investigative, Intellectual, Sophisticated, Innovative, Futuristic, Wholesome, Raw, Optimistic.
+
+**Dataset Details**
+**Source:** The Movies Dataset on Kaggle
+**Chosen File:** movies_metadata.csv
+**Features Used:** original_title, overview
+**Dataset Size:** 15,000 movies
+**Generated Labels:** 29 emotional tones, including Humorous, Inspiring, Nostalgic, and more.
+
+
