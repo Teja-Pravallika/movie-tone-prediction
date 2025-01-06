@@ -1,5 +1,7 @@
+from scripts.model import initialize_model
+from scripts.dataset import create_dataloaders, tokenizer, max_token_length
 from scripts.validation import validate
-from scripts.model import model, testing_loader, default_threshold
+
 
 if __name__ == "__main__":
     validation_loss, validation_accuracy, precision, recall, f1 = validate(model, testing_loader, default_threshold)
