@@ -1,5 +1,5 @@
 from imports import *
-from dataset import create_dataloaders, tokenizer, max_token_length
+from scripts.dataset import tokenizer, max_token_length
 
 class RobertaClass(torch.nn.Module):
     def __init__(self):
