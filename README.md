@@ -47,8 +47,6 @@ Humorous, Inspiring, Heartwarming, Bittersweet, Euphoric, Melancholic, Tense, Ro
 
 Training used a multi-label binary classification approach. 
 
-**Key aspects:**
-
 **Loss Function:** BCEWithLogitsLoss
 
 **Threshold:** 0.5
@@ -67,13 +65,21 @@ The training process is implemented in the train_model function, available in th
 
 ![Loss and Accuracy during training With Sampling](images/loss_accuracy_tpm.png)
 
-Training Results without using Sampling with replacement:
+**Training Results without using Sampling with replacement:**
 
 ![Table showing training results without sampling](images/train_results_no_sampling.png)
 
-Training Results using Sampling with replacement:
+**Training Results using Sampling with replacement:**
 
-![Table showing training results using sampling](images/training_results_with_sampling.png)
+![Table showing training results using sampling](images/train_results_with_sampling.png)
+
+Evaluation Metrics:
+
+* The validation is done on test dataset by calling the validate method in validate.py in scripts
+
+** Comaparision of test metrics before and after Sampling
+
+![Table showing test results with and without sampling](images/final_eval_results.png)
 
 
 
