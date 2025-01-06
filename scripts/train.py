@@ -1,6 +1,11 @@
 from imports import *
-from scripts.model import create_dataloaders, initialize_model, tokenizer, max_token_length
+from scripts.model import initialize_model
+from scripts.dataset import create_dataloaders, tokenizer, max_token_length
 from scripts.validation import validate
+
+training_loader, testing_loader = create_dataloaders(dataframe, tokenizer, max_token_length, tone_to_num)
+
+model, loss_function, optimizer, device = initialize_model()
 
 def train_model(model, training_loader, validation_loader, optimizer, num_epochs, default_threshold):
     steps = []
