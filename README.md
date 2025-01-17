@@ -6,7 +6,7 @@
 
    b) **To validate the model:**  python scripts/validate.py
 
-# Fine-tuning Roberta for Emotional Tone Prediction using GPT-4o as a teacher
+# Fine-tuning Roberta for Emotional Tone Prediction using GPT-4o-mini as a teacher
 An LLM-based approach to classify emotional tones in movie descriptions
 
 ### **Introduction**
