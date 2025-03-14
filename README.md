@@ -1,3 +1,5 @@
+
+Author - Teja Pravallika Nandamuri
 ### **Getting Started:**
 
 1. **Set up the environment and install dependencies:**  pip install -r requirements.txt
